@@ -1,0 +1,2 @@
+timestamp,age,sex,hba1c,fpg,sbp,insulin_current,insulin_baseline,glipizide_baseline,metformin_baseline,dementia_baseline,period,predicted_hba1c,ci_lower,ci_upper
+2026-06-01T20:09:56,62,ชาย,7.0,124,136,0,0,1,1,0,60,6.248,4.965,7.555
