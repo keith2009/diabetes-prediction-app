@@ -1,0 +1,92 @@
+Variable / Field Name	Data Type	Description	Unit / Values	Remark
+age	object	อายุของผู้ป่วย ณ วันที่ baseline		
+identify_by	object	วิธีการ identify เข้า dataset โรค DM	{'medication', 'icd10', 'lab'}	
+type1	int64	เป็นเบาหวานประเภทที่ 1 	{0, 1}	
+type2	int64	เป็นเบาหวานประเภทที่ 2 	{0, 1}	
+gdm	int64	เป็นเบาหวานที่เกิดขึ้นระหว่างตั้งครรภ์	{0, 1}	
+sex	object	เพศของผู้ป่วยตามที่บันทึกในระบบ	{'FEMALE', 'MALE'}	
+dm_onset	int64	วันที่วินิจฉัยโรค DM (baseline)	{1}	
+vitalsign_resp_P	float64	ค่าอัตราการหายใจ Respiratory Rate ที่ period P	/Min	period P คือข้อมูลที่เกิดก่อนหรือหลังจากวันที่วินิจฉัยโรค DM (baseline)
+vitalsign_o2sat_P	float64	ค่าความอิ่มตัวของออกซิเจนในเลือด ที่ period P		P มีค่าเป็น [-i ถึง i] โดย แต่ละ period มีระยะเวลา 60 วัน
+vitalsign_temp_P	float64	อุณหภูมิร่างกาย ที่ period P	*C	P = -1 คือ period ที่เกิดก่อนวัน dm_onset 30-90 วัน
+vitalsign_hr_P	float64	อัตราการเต้นของหัวใจหรือชีพจร ที่ period P	/Min	P = 0 คือ period ที่เกิดภายในช่วงเวลาก่อนและหลัง 30 วัน จาก dm_onset
+vitalsign_ht_P	float64	ส่วนสูงของผู้ป่วย ที่ period P	Cms	P = 1 คือ period ที่เกิดในช่วง 30-90 วัน หลังจากวัน dm_onset
+vitalsign_wt_P	float64	น้ำหนักตัวของผู้ป่วย ที่ period P	Kgs	
+vitalsign_bmi_P	float64	ดัชนีมวลกาย ที่ period P		
+vitalsign_sbp_P	float64	ความดันโลหิตตัวบน ที่ period P	mmHg	
+vitalsign_dbp_P	float64	ความดันโลหิตตัวล่าง ที่ period P	mmHg	
+lab_fpg_P	float64	ระดับน้ำตาลในเลือดหลังอดอาหาร ที่ period P	mg/dL	
+lab_hba1c_P	float64	ค่าฮีโมโกลบินเอวันซี สะท้อนระดับน้ำตาลเฉลี่ยย้อนหลัง ที่ period P	%	
+lab_cpeptide_P	float64	ระดับซีเปปไทด์ สะท้อนการสร้างอินซูลินจากร่างกาย ที่ period P		
+lab_wbc_P	float64	จำนวนเม็ดเลือดขาว ที่ period P	10^3/uL	
+lab_platelet_P	float64	จำนวนเกล็ดเลือด ที่ period P	10^3/uL	
+lab_hemoglobin_P	float64	ระดับฮีโมโกลบินในเลือด ที่ period P	g/dL	
+lab_hematocrit_P	float64	สัดส่วนเม็ดเลือดแดงต่อปริมาตรเลือด ที่ period P	%	
+lab_tg_P	float64	ระดับไตรกลีเซอไรด์ ที่ period P	mg/dL	
+lab_chol_P	float64	ระดับคอเลสเตอรอลรวม ที่ period P	mg/dL	
+lab_hdl_P	float64	ระดับไขมันชนิด HDL ที่ period P	mg/dL	
+lab_ldl_P	float64	ระดับไขมันชนิด LDL ที่ period P	mg/dL	
+lab_uric_P	float64	ระดับกรดยูริกในเลือด ที่ period P	mg/dL	
+lab_t3_P	float64	ระดับฮอร์โมนไทรอยด์ T3 ที่ period P	ng/dL	
+lab_t4_P	float64	ระดับฮอร์โมนไทรอยด์ T4 ที่ period P	ug/dl	
+lab_troponin_P	float64	ระดับโทรโปนิน ซึ่งเป็นตัวชี้วัดการบาดเจ็บของกล้ามเนื้อหัวใจ ที่ period P	ng/L	
+lab_probnp_P	float64	ระดับ Pro-BNP หรือ NT-proBNP ใช้ประเมินภาวะหัวใจทำงานหนักหรือหัวใจล้มเหลว ที่ period P	pg/ml	
+lab_calcium_P	float64	ระดับแคลเซียมในเลือด ที่ period P	mg/dL	
+lab_co2_P	float64	ระดับคาร์บอนไดออกไซด์หรือไบคาร์บอเนตในเลือด ที่ period P	mEq/L	
+lab_cl_P	float64	ระดับคลอไรด์ในเลือด ที่ period P	mEq/L	
+lab_po4_P	float64	ระดับฟอสเฟตในเลือด ที่ period P	mg/dL	
+lab_potassium_P	float64	ระดับโพแทสเซียมในเลือด ที่ period P	mEq/L	
+lab_sodium_P	float64	ระดับโซเดียมในเลือด ที่ period P	mEq/L	
+lab_protein_in_urine_24_hrs_P	float64	ปริมาณโปรตีนในปัสสาวะ 24 ชั่วโมง ที่ period P		
+lab_uacr_P	float64	อัตราส่วนอัลบูมินต่อครีเอตินินในปัสสาวะ ที่ period P		
+lab_upcr_P	float64	อัตราส่วนโปรตีนต่อครีเอตินินในปัสสาวะ ที่ period P		
+co_arrhythmias_P	object	มีภาวะหัวใจเต้นผิดจังหวะ จาก baseline ที่ period P	{NaT, 1}	
+co_atrial_fibrillation_P	object	มีภาวะหัวใจห้องบนสั่นพลิ้ว จาก baseline ที่ period P	{NaT, 1}	
+co_cad_P	object	มีโรคหลอดเลือดหัวใจ จาก baseline ที่ period P	{NaT, 1}	
+co_dementia_P	object	มีภาวะสมองเสื่อม จาก baseline ที่ period P	{NaT, 1}	
+co_hf_P	object	มีภาวะหัวใจล้มเหลว จาก baseline ที่ period P	{NaT, 1}	
+co_stroke_P	object	มีประวัติหรือมีภาวะโรคหลอดเลือดสมอง จาก baseline ที่ period P	{NaT, 1}	
+co_ht_P	object	มีโรคความดันโลหิตสูง จาก baseline ที่ period P	{NaT, 1}	
+co_ckd_P	object	มีโรคไตเรื้อรัง จาก baseline ที่ period P	{NaT, 1}	
+co_atrial_fibrillation	int64	ตัวบ่งชี้ภาวะหัวใจห้องบนสั่นพลิ้ว	{0, 1}	
+co_hf	int64	ตัวบ่งชี้ภาวะหัวใจล้มเหลว	{0, 1}	
+co_ckd	int64	ตัวบ่งชี้โรคไตเรื้อรัง	{0, 1}	
+co_stroke	int64	ตัวบ่งชี้โรคหลอดเลือดสมอง	{0, 1}	
+co_dementia	int64	ตัวบ่งชี้ภาวะสมองเสื่อม	{0, 1}	
+co_ht	int64	ตัวบ่งชี้โรคความดันโลหิตสูง	{0, 1}	
+co_arrhythmias	int64	ตัวบ่งชี้ภาวะหัวใจเต้นผิดจังหวะ	{0, 1}	
+co_cad	int64	ตัวบ่งชี้โรคหลอดเลือดหัวใจ	{0, 1}	
+med_acarbose_P	object	มีการใช้ยา acarbose จาก baseline ที่ period P	{NaT, 1}	
+med_dapagliflozin_P	object	มีการใช้ยา dapagliflozin จาก baseline ที่ period P	{NaT, 1}	
+med_dulaglutide_P	object	มีการใช้ยา dulaglutide จาก baseline ที่ period P	{NaT, 1}	
+med_empagliflozin_P	object	มีการใช้ยา empagliflozin จาก baseline ที่ period P	{NaT, 1}	
+med_gemigliptin_P	object	มีการใช้ยา gemigliptin จาก baseline ที่ period P	{NaT, 1}	
+med_glibenclamide_P	object	มีการใช้ยา glibenclamide จาก baseline ที่ period P	{NaT, 1}	
+med_gliclazide_P	object	มีการใช้ยา gliclazide จาก baseline ที่ period P	{NaT, 1}	
+med_glimepiride_P	object	มีการใช้ยา glimepiride จาก baseline ที่ period P	{NaT, 1}	
+med_glipizide_P	object	มีการใช้ยา glipizide จาก baseline ที่ period P	{NaT, 1}	
+med_insulin_P	object	มีการใช้อินซูลิน จาก baseline ที่ period P	{NaT, 1}	
+med_linagliptin_P	object	มีการใช้ยา linagliptin จาก baseline ที่ period P	{NaT, 1}	
+med_liraglutide_P	object	มีการใช้ยา liraglutide จาก baseline ที่ period P	{NaT, 1}	
+med_metformin_P	object	มีการใช้ยา metformin จาก baseline ที่ period P	{NaT, 1}	
+med_pioglitazone_P	object	มีการใช้ยา pioglitazone จาก baseline ที่ period P	{NaT, 1}	
+med_semaglutide_P	object	มีการใช้ยา semaglutide จาก baseline ที่ period P	{NaT, 1}	
+med_sitagliptin_P	object	มีการใช้ยา sitagliptin จาก baseline ที่ period P	{NaT, 1}	
+med_trelagliptin_P	object	มีการใช้ยา trelagliptin จาก baseline ที่ period P	{NaT, 1}	
+med_gliclazide	int64	ตัวบ่งชี้การใช้ยา gliclazide	{0, 1}	
+med_gemigliptin	int64	ตัวบ่งชี้การใช้ยา gemigliptin	{0, 1}	
+med_pioglitazone	int64	ตัวบ่งชี้การใช้ยา pioglitazone	{0, 1}	
+med_acarbose	int64	ตัวบ่งชี้การใช้ยา acarbose	{0, 1}	
+med_linagliptin	int64	ตัวบ่งชี้การใช้ยา linagliptin	{0, 1}	
+med_empagliflozin	int64	ตัวบ่งชี้การใช้ยา empagliflozin	{0, 1}	
+med_insulin	int64	ตัวบ่งชี้การใช้อินซูลิน	{0, 1}	
+med_glipizide	int64	ตัวบ่งชี้การใช้ยา glipizide	{0, 1}	
+med_dulaglutide	int64	ตัวบ่งชี้การใช้ยา dulaglutide	{0, 1}	
+med_semaglutide	int64	ตัวบ่งชี้การใช้ยา semaglutide	{0, 1}	
+med_dapagliflozin	int64	ตัวบ่งชี้การใช้ยา dapagliflozin	{0, 1}	
+med_metformin	int64	ตัวบ่งชี้การใช้ยา metformin	{0, 1}	
+med_sitagliptin	int64	ตัวบ่งชี้การใช้ยา sitagliptin	{0, 1}	
+med_trelagliptin	int64	ตัวบ่งชี้การใช้ยา trelagliptin	{0, 1}	
+med_liraglutide	int64	ตัวบ่งชี้การใช้ยา liraglutide	{0, 1}	
+med_glibenclamide	int64	ตัวบ่งชี้การใช้ยา glibenclamide	{0, 1}	
+med_glimepiride	int64	ตัวบ่งชี้การใช้ยา glimepiride	{0, 1}	
