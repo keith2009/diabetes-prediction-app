@@ -311,21 +311,50 @@ if st.button("🔮 พยากรณ์ค่า HbA1c ในรอบถัด
         except Exception:
             pass
 
-    # ──────────────────────────────────────────
-    # RESULTS DISPLAY (NEW DESIGN)
+   # ──────────────────────────────────────────
+    # RESULTS DISPLAY (NEW DESIGN WITH DIET & CLINICAL TIPS)
     # ──────────────────────────────────────────
     if prediction < 6.5:
         color, bg_color = "#059669", "#ecfdf5"
         level, level_en = "🟢 ควบคุมได้ดีมาก", "Well Controlled"
-        tips = ["รักษาพฤติกรรมการกินและการออกกำลังกายที่ดีต่อไป", "วัดน้ำตาลด้วยตนเองตามคำแนะนำของแพทย์อย่างสม่ำเสมอ"]
+        
+        clinical_tips = [
+            "รักษาพฤติกรรมการกินและการออกกำลังกายที่ดีต่อไปเพื่อรักษามาตรฐาน",
+            "วัดระดับน้ำตาลในเลือดด้วยตนเอง (SMBG) ตามแผนเดิมอย่างสม่ำเสมอ"
+        ]
+        diet_tips = [
+            "🥗 <strong>เน้นทาน:</strong> ผักใบเขียว, ข้าวกล้อง, ธัญพืชไม่ขัดสี และโปรตีนไขมันต่ำ (ปลา, อกไก่)",
+            "❌ <strong>ควรเลี่ยง:</strong> เครื่องดื่มเติมน้ำตาล ขนมหวาน และอาหารแปรรูปทุกชนิด"
+        ]
+        exercise_tips = "🏃‍♂️ ออกกำลังกายแบบแอโรบิก (เช่น เดินเร็ว, ปั่นจักรยาน) อย่างน้อย 150 นาที/สัปดาห์"
+
     elif prediction < 8.0:
         color, bg_color = "#d97706", "#fffbeb"
         level, level_en = "🟡 เฝ้าระวัง", "Monitor Closely"
-        tips = ["ลดการบริโภคน้ำตาลและแป้งขัดขาว", "เพิ่มการออกกำลังกายอย่างน้อย 150 นาที/สัปดาห์", "พบแพทย์ตามนัดและปรึกษาเรื่องการปรับยา"]
+        
+        clinical_tips = [
+            "พบแพทย์ตามนัดเพื่อประเมินซ้ำ และปรึกษาเรื่องการปรับเปลี่ยนปริมาณหรือประเภทของยาควบคุมน้ำตาล",
+            "เพิ่มความถี่ในการตรวจเช็กค่าน้ำตาลเพื่อเฝ้าระวังการแกว่งของระดับน้ำตาลในเลือด"
+        ]
+        diet_tips = [
+            "🥗 <strong>เน้นทาน:</strong> คาร์โบไฮเดรตเชิงซ้อนปริมาณพอเหมาะ, ผักที่มีใยอาหารสูงเพื่อช่วยชะลอการดูดซึมน้ำตาล",
+            "❌ <strong>ควรเลี่ยง:</strong> ข้าวขาว, ขนมปังขาว, ผลไม้รสหวานจัด (เช่น ทุเรียน, มะม่วงสุก)"
+        ]
+        exercise_tips = "🏃‍♂️ เน้นการออกกำลังกายสม่ำเสมอ 3-5 วัน/สัปดาห์ เพื่อช่วยเพิ่มความไวต่ออินซูลิน (Insulin Sensitivity)"
+
     else:
         color, bg_color = "#dc2626", "#fef2f2"
         level, level_en = "🔴 ความเสี่ยงสูง", "High Risk — Urgent Review"
-        tips = ["นัดพบแพทย์ก่อนกำหนดเพื่อพิจารณาปรับแผนการรักษาทันที", "หลีกเลี่ยงอาหารที่มีน้ำตาลสูงทุกประเภท", "ติดตามค่าน้ำตาลในเลือดอย่างใกล้ชิดและปฏิบัติตามแผนยาอย่างเคร่งครัด"]
+        
+        clinical_tips = [
+            "<strong>พิจารณานัดพบแพทย์ก่อนกำหนด</strong> เพื่อปรับแผนการรักษาและปรับสูตรยา/อินซูลินทันที",
+            "ติดตามค่าน้ำตาลในเลือดอย่างใกล้ชิด และสังเกตอาการผิดปกติ (เช่น ปัสสาวะบ่อย, กระหายน้ำจัด, น้ำหนักลดผิดปกติ)"
+        ]
+        diet_tips = [
+            "🥗 <strong>เน้นทาน:</strong> ผักต้มหรือผักสด, โปรตีนสะอาด, และดื่มน้ำเปล่าให้เพียงพอ",
+            "❌ <strong>งดเด็ดขาด:</strong> อาหารและเครื่องดื่มที่มีน้ำตาลสูง, ข้าวแป้งปริมาณมาก, และซอสปรุงรสที่มีส่วนผสมของน้ำตาลหรือแป้ง"
+        ]
+        exercise_tips = "⚠️ <strong>ข้อควรระวัง:</strong> ปรึกษาแพทย์ก่อนออกกำลังกายหักโหม หากระดับน้ำตาลในเลือดสูงกว่า 250 mg/dL ควรเลี่ยงการออกกำลังกายหนัก"
 
     st.subheader("📊 ผลการวิเคราะห์และคาดการณ์จาก AI")
     st.markdown(f"""
@@ -335,6 +364,10 @@ if st.button("🔮 พยากรณ์ค่า HbA1c ในรอบถัด
         .predict-box {{ flex: 1.2; padding: 24px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); color: {color}; background: {bg_color}; border-left: 6px solid {color}; text-align: center; min-width: 300px; }}
         .box-title {{ font-size: 0.9rem; color: #64748b; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; }}
         .box-value {{ font-size: 3rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }}
+        
+        /* สไตล์ใหม่สำหรับกล่องคำแนะนำแยก 3 คอลัมน์ */
+        .tip-card {{ background: white; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02); height: 100%; }}
+        .tip-title {{ font-size: 1rem; font-weight: 600; color: #1e293b; margin-bottom: 12px; border-bottom: 2px solid #f1f5f9; padding-bottom: 6px; }}
     </style>
     
     <div class="result-container">
@@ -356,17 +389,38 @@ if st.button("🔮 พยากรณ์ค่า HbA1c ในรอบถัด
     """, unsafe_allow_html=True)
 
     if prediction < 6.5:
-        st.success(f"🟢 **ประเมินสถานะ:** {level} ({level_en})")
+        st.success(f"**ประเมินสถานะระบบไฟจราจร:** {level} ({level_en})")
     elif prediction < 8.0:
-        st.warning(f"🟡 **ประเมินสถานะ:** {level} ({level_en})")
+        st.warning(f"**ประเมินสถานะระบบไฟจราจร:** {level} ({level_en})")
     else:
-        st.error(f"🔴 **ประเมินสถานะ:** {level} ({level_en})")
+        st.error(f"**ประเมินสถานะระบบไฟจราจร:** {level} ({level_en})")
 
-    st.markdown("**💡 คำแนะนำสำหรับการแพทย์และผู้ป่วย:**")
-    for tip in tips:
-        st.markdown(f"• {tip}")
+    st.markdown("### 💡 แผนคำแนะนำการดูแลผู้ป่วยรายบุคคล (Personalized Clinical Guidance)")
+    
+    # แสดงคำแนะนำแยกเป็น 3 คอลัมน์ตามโครงสร้างใหม่
+    tip_col1, tip_col2, tip_col3 = st.columns(3)
+    
+    with tip_col1:
+        st.markdown('<div class="tip-card"><div class="tip-title">🩺 คำแนะนำทางคลินิก (Clinical)</div>', unsafe_allow_html=True)
+        for tip in clinical_tips:
+            st.markdown(f"• {tip}")
+        st.markdown('</div>', unsafe_allow_html=True)
+            
+    with tip_col2:
+        st.markdown('<div class="tip-card"><div class="tip-title">🍽️ การปรับพฤติกรรมอาหาร (Dietary)</div>', unsafe_allow_html=True)
+        for tip in diet_tips:
+            st.markdown(f"• {tip}", unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+            
+    with tip_col3:
+        st.markdown('<div class="tip-card"><div class="tip-title">🏃‍♂️ การออกกำลังกาย (Activity)</div>', unsafe_allow_html=True)
+        st.markdown(f"• {exercise_tips}", unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
 
     if has_ci:
         st.caption("ℹ️ ช่วงความเชื่อมั่น 90% คำนวณโดย Conformal Prediction (MAPIE Jackknife+)")
     if os.path.exists(LOG_FILE):
         st.caption(f"📁 บันทึกการพยากรณ์นี้ลงใน `{LOG_FILE}` เรียบร้อยแล้ว")
+#python -m streamlit run app.py
